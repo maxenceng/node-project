@@ -1,0 +1,11 @@
+<!DOCTYPE HTML>
+<html>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io.connect()
+        const emission = ['START', 'PAUSE', 'END', 'BEGIN', 'PREV', 'NEXT']
+            .map(choice => socket.emit('slidEvent', { CMD: choice, PRES_ID: 1 }))
+        const listen = ['START', 'PAUSE', 'END', 'BEGIN', 'PREV', 'NEXT']
+            .map(choice => socket.on(choice, (content) => console.log(content)))
+    </script>
+</html>
