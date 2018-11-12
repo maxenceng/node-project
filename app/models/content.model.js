@@ -25,7 +25,7 @@ class ContentModel {
   static create(content, callback) {
     const {id, fileName} = content
     const data = content.getData()
-    const filePath = path.join(pathContent, fileName)
+    const filePath = path.join(pathContent, fileName || id)
     fs.writeFile(filePath, data, (err) => {
       if (err) return callback(err)
       const metaPath = path.join(pathContent, `${id}.meta.json`)

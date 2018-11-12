@@ -23,11 +23,11 @@ router
     res.send(presentations)
   })
   .post('/savePres', (req, res) => {
-    const {id, name, desc} = req.body
+    const { id } = req.body
     const filePath = path.join(pathPresentations, `${id}.pres.json`)
-    const jsonContent = JSON.stringify({id, name, desc}, null, '\t')
+    const jsonContent = JSON.stringify(req.body, null, '\t')
     fs.writeFileSync(filePath, jsonContent)
-    res.send({id, name, desc})
+    res.send(req.body)
   })
 
 module.exports = router

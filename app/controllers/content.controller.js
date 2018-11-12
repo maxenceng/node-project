@@ -23,7 +23,7 @@ const list = (req, res) => {
 }
 
 const create = (req, res) => {
-  const {type, title, src, fileName, file} = req.body
+  const { type, title, src, fileName, file } = req.body
   const id = utils.generateUUID()
   const content = new ContentModel({type, id, title, src, fileName})
   if (type === 'img') content.setData(file)

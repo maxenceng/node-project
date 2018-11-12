@@ -2,6 +2,7 @@ const express = require('express')
 const http = require('http')
 const path = require('path')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const config = require('./config.json')
 process.env.config = JSON.stringify(config)
@@ -15,6 +16,7 @@ const IOController = require('./app/controllers/io.controllers')
 
 const app = express()
 
+app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(defaultRoute)
